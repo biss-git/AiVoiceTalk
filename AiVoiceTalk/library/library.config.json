@@ -1,0 +1,63 @@
+{
+  "Key": "AiVoiceLibrary",
+  "Name": "A.I.VOICE",
+  "Description": "A.I.VOICE を呼ぶためのライブラリです。",
+  "OS": "Windows",
+  "Language": "Japanese",
+  "VolumeSetting": {
+    "Name": "音量",
+    "Unit": "[倍]",
+    "Description": "",
+    "Value": 1,
+    "DefaultValue": 1,
+    "Min": 0,
+    "MinExtend": 0,
+    "Max": 2,
+    "MaxExtend": 2,
+    "SmallStep": 0.01,
+    "StringFormat": "0.00",
+    "Hide": true
+  },
+  "SpeedSetting": {
+    "Name": "話速",
+    "Unit": "[倍]",
+    "Description": "",
+    "Value": 1,
+    "DefaultValue": 1,
+    "Min": 0.5,
+    "MinExtend": 0.1,
+    "Max": 4,
+    "MaxExtend": 5,
+    "SmallStep": 0.01,
+    "StringFormat": "0.00",
+    "Hide": true
+  },
+  "PitchSetting": {
+    "Name": "高さ",
+    "Unit": "[倍]",
+    "Description": "",
+    "Value": 1,
+    "DefaultValue": 1,
+    "Min": 0.5,
+    "MinExtend": 0.1,
+    "Max": 2,
+    "MaxExtend": 5,
+    "SmallStep": 0.01,
+    "StringFormat": "0.00",
+    "Hide": true
+  },
+  "EmphasisSetting": {
+    "Name": "抑揚",
+    "Unit": "[倍]",
+    "Description": "",
+    "Value": 1,
+    "DefaultValue": 1,
+    "Min": 0,
+    "MinExtend": 0,
+    "Max": 2,
+    "MaxExtend": 5,
+    "SmallStep": 0.01,
+    "StringFormat": "0.00",
+    "Hide": true
+  }
+}

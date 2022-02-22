@@ -1,0 +1,90 @@
+{
+  "Key": "AiVoiceTalk",
+  "Name": "A.I.VOICEトーク",
+  "Description": "A.I.VOICE を呼べます",
+  "AssemblyName": "AiVoiceTalk.dll",
+  "OS": "Windows",
+  "Language": "Japanese",
+  "LibraryFormat": [
+    "AiVoiceLibrary"
+  ],
+  "AccentEnable": false,
+  "AccentHide": true,
+  "SubPresetEnable": false,
+  "EngineSaveEnable": false,
+  "ShortPauseSetting": {
+    "Value": 80,
+    "DefaultValue": 80,
+    "Min": 80,
+    "Max": 500,
+    "SmallStep": 10
+  },
+  "LongPauseSetting": {
+    "Value": 370,
+    "DefaultValue": 370,
+    "Min": 100,
+    "Max": 2000,
+    "SmallStep": 10
+  },
+  "VolumeSetting": {
+    "Name": "音量",
+    "Unit": "[倍]",
+    "Description": "",
+    "Value": 1,
+    "DefaultValue": 1,
+    "Min": 0,
+    "MinExtend": 0,
+    "Max": 2,
+    "MaxExtend": 2,
+    "SmallStep": 0.01,
+    "StringFormat": "0.00",
+    "Type": "Section",
+    "Hide": true
+  },
+  "SpeedSetting": {
+    "Name": "話速",
+    "Unit": "[倍]",
+    "Description": "",
+    "Value": 1,
+    "DefaultValue": 1,
+    "Min": 0.5,
+    "MinExtend": 0.1,
+    "Max": 2,
+    "MaxExtend": 5,
+    "SmallStep": 0.01,
+    "StringFormat": "0.00",
+    "Type": "Section",
+    "Hide": true
+  },
+  "PitchSetting": {
+    "Name": "高さ",
+    "Unit": "[倍]",
+    "Description": "",
+    "Value": 1,
+    "DefaultValue": 1,
+    "Min": 0.5,
+    "MinExtend": 0.1,
+    "Max": 2,
+    "MaxExtend": 5,
+    "SmallStep": 0.01,
+    "StringFormat": "0.00",
+    "Type": "Section",
+    "Hide": true
+  },
+  "EmphasisSetting": {
+    "Name": "抑揚",
+    "Unit": "[倍]",
+    "Description": "",
+    "Value": 1,
+    "DefaultValue": 1,
+    "Min": 0,
+    "MinExtend": 0,
+    "Max": 2,
+    "MaxExtend": 5,
+    "SmallStep": 0.01,
+    "StringFormat": "0.00",
+    "Type": "Section",
+    "Hide": true
+  },
+  "AdditionalSettings": null
+}
