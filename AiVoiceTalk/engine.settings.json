@@ -1,112 +1,15 @@
 {
-  "Bools": [
-    {
-      "Key": "bool1",
-      "Name": "ON/OFFスイッチ",
-      "Description": "説明文",
-      "Value": false,
-      "DefaultValue": false,
-      "Order": 0,
-      "Hide": false
-    },
-    {
-      "Key": "bool2",
-      "Name": "ON/OFFスイッチ",
-      "Description": "",
-      "Value": false,
-      "DefaultValue": false,
-      "Order": 0,
-      "Hide": false
-    }
-  ],
-  "Ints": [
-    {
-      "Key": "int1",
-      "Name": "整数の設定値",
-      "Description": "0 ~ 10",
-      "Value": 5,
-      "DefaultValue": 5,
-      "Min": 0,
-      "Max": 10,
-      "SmallStep": 1,
-      "Order": 0,
-      "Hide": false
-    },
-    {
-      "Key": "int2",
-      "Name": "整数の設定値",
-      "Description": "0 ~ 100",
-      "Value": 5,
-      "DefaultValue": 5,
-      "Min": 0,
-      "Max": 100,
-      "SmallStep": 1,
-      "Order": 0,
-      "Hide": false
-    }
-  ],
-  "Doubles": [
-    {
-      "Key": "double1",
-      "Name": "実数の設定値",
-      "Description": "-10 ~ 10",
-      "Value": 5,
-      "DefaultValue": 5,
-      "Min": -10,
-      "Max": 10,
-      "SmallStep": 0.1,
-      "StringFormat": "0.00",
-      "Order": 0,
-      "Hide": false
-    }
-  ],
   "Strings": [
     {
-      "Key": "string",
-      "Name": "文字列の自由入力",
-      "Description": "100文字以内",
       "Value": "",
       "DefaultValue": "",
-      "Type": "",
-      "MaxLength": 100,
+      "Key": "PhrasePath",
+      "Name": "プレーズ辞書 のパス",
+      "Description": "use.pdic のようなA.I.VOICEのフレーズ辞書を選択するとフレーズ編集が効くようになります。\nA.I.VOICE側でも同じファイルが指定されている必要があります。",
       "Order": 0,
-      "Hide": false
-    },
-    {
-      "Key": "combobox",
-      "Name": "コンボボックスの設定値",
-      "Description": "好きなものを選んでください。",
-      "Value": "",
-      "DefaultValue": "",
-      "Type": "combobox",
-      "ComboItems": [
-        "a",
-        "b",
-        "c"
-      ],
-      "Order": 0,
-      "Hide": false
-    },
-    {
-      "Key": "file",
-      "Name": "ファイル選択ダイアログ",
-      "Description": "テキストファイルでフィルタかけてます。複数選択は対応してないです。\n複数選択したい場合はフォルダ選択ダイアログで何とか頑張ってください。",
-      "Value": "",
-      "DefaultValue": "",
       "Type": "file",
-      "FileDialogFilter": "テキストファイル(.txt) |*.txt| すべてのファイル |*.*",
-      "Order": 0,
-      "Hide": false
-    },
-    {
-      "Key": "folder",
-      "Name": "フォルダ選択ダイアログ",
-      "Description": "フォルダを選択することができます。",
-      "Value": "",
-      "DefaultValue": "",
-      "Type": "folder",
-      "Order": 0,
-      "Hide": false
+      "Hide": false,
+      "FileDialogFilter": "フレーズ辞書(*.pdic)|*.pdic"
     }
   ]
 }

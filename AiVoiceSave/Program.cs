@@ -14,12 +14,18 @@ namespace AiVoiceSave
         private static readonly string voicesFile = "voiceNames.txt";
         private static readonly string voiceFile = "voiceName.txt";
         private static readonly string textFile = "text.txt";
-        // private static readonly string speedFile = "speed.txt";
         private static readonly string wavFile = "output.wav";
+        private static readonly string masterFile = "master.txt";
+        private static readonly string phraseFile = "phrase.txt";
+        private static readonly string phrasePathFile = "phrasePath.txt";
 
         static void Main(string[] args)
         {
             var _ttsControl = new TtsControl();// TTS APIの呼び出し用オブジェクト
+            var originalName = "";
+            var originalMaster = "";
+            var originalPhraseDic = "";
+            var phrasePath = "";
 
             {
                 // 接続先を探す
@@ -51,7 +57,7 @@ namespace AiVoiceSave
                 }
                 catch (Exception ex)
                 {
-                    _ttsControl.Disconnect();
+                    Disconnect(_ttsControl, originalMaster, originalName, phrasePath, originalPhraseDic);
                     return;
                 }
             }
@@ -68,7 +74,7 @@ namespace AiVoiceSave
                 }
                 catch (Exception)
                 {
-                    _ttsControl.Disconnect();
+                    Disconnect(_ttsControl, originalMaster, originalName, phrasePath, originalPhraseDic);
                     return;
                 }
                 File.WriteAllText(voicesFile, voiceNames);
@@ -88,11 +94,12 @@ namespace AiVoiceSave
                     // 音声を設定する
                     try
                     {
+                        originalName = _ttsControl.CurrentVoicePresetName;
                         _ttsControl.CurrentVoicePresetName = voiceName;
                     }
                     catch (Exception)
                     {
-                        _ttsControl.Disconnect();
+                        Disconnect(_ttsControl, originalMaster, originalName, phrasePath, originalPhraseDic);
                         return;
                     }
                 }
@@ -101,13 +108,48 @@ namespace AiVoiceSave
             {
                 // マスターコントロールを設定するならここでやる
 
-                //_ttsControl.MasterControl = 
+                var master = string.Empty;
+                if (File.Exists(masterFile))
+                {
+                    master = File.ReadAllText(masterFile);
+                }
+
+                if (!string.IsNullOrWhiteSpace(master))
+                {
+                    originalMaster = _ttsControl.MasterControl;
+                    try
+                    {
+                        _ttsControl.MasterControl = master;
+                    }
+                    catch
+                    {
+                        Disconnect(_ttsControl, originalMaster, originalName, phrasePath, originalPhraseDic);
+                        return;
+                    }
+                }
             }
 
             {
-                // 辞書を反映させるならここでやる
-
-                // _ttsControl.ReloadPhraseDictionary();
+                // 辞書を反映させる
+                if (File.Exists(phrasePathFile) && File.Exists(phraseFile))
+                {
+                    phrasePath = File.ReadAllText(phrasePathFile);
+                    var phraseDic = File.ReadAllText(phraseFile);
+                    if (File.Exists(phrasePath))
+                    {
+                        try
+                        {
+                            originalPhraseDic = File.ReadAllText(phrasePath, Encoding.GetEncoding("shift_jis"));
+                            File.WriteAllText(phrasePath, phraseDic, Encoding.GetEncoding("shift_jis"));
+                            _ttsControl.ReloadPhraseDictionary();
+                        }
+                        catch (Exception)
+                        {
+                            Disconnect(_ttsControl, originalMaster, originalName, phrasePath, originalPhraseDic);
+                            return;
+                        }
+                    }
+                }
             }
 
             {
@@ -120,7 +162,7 @@ namespace AiVoiceSave
 
                 if (string.IsNullOrWhiteSpace(text))
                 {
-                    _ttsControl.Disconnect();
+                    Disconnect(_ttsControl, originalMaster, originalName, phrasePath, originalPhraseDic);
                     return;
                 }
 
@@ -135,7 +177,7 @@ namespace AiVoiceSave
                 }
                 catch (Exception ex)
                 {
-                    _ttsControl.Disconnect();
+                    Disconnect(_ttsControl, originalMaster, originalName, phrasePath, originalPhraseDic);
                     return;
                 }
             }
@@ -149,6 +191,51 @@ namespace AiVoiceSave
                     File.Delete(path);
                 }
                 _ttsControl.SaveAudioToFile(path);
+            }
+
+            Disconnect(_ttsControl, originalMaster, originalName, phrasePath, originalPhraseDic);
+        }
+
+
+        private static void Disconnect(TtsControl _ttsControl, string masterJson, string voiceName, string phrasePath, string phraseDic)
+        {
+            // キャラクター選択を元に戻す
+            if (!string.IsNullOrEmpty(voiceName))
+            {
+                try
+                {
+                    _ttsControl.CurrentVoicePresetName = voiceName;
+                }
+                catch (Exception)
+                {
+                }
+            }
+
+            // マスターコントロールをもとに戻す
+            if (!string.IsNullOrWhiteSpace(masterJson))
+            {
+                try
+                {
+                    _ttsControl.MasterControl = masterJson;
+                }
+                catch (Exception)
+                {
+                }
+            }
+
+            // フレーズ辞書をもとに戻す
+            if (!string.IsNullOrWhiteSpace(phrasePath) &&
+                File.Exists(phrasePath) &&
+                !string.IsNullOrWhiteSpace(phraseDic))
+            {
+                try
+                {
+                    File.WriteAllText(phrasePath, phraseDic, Encoding.GetEncoding("shift_jis"));
+                    _ttsControl.ReloadPhraseDictionary();
+                }
+                catch (Exception)
+                {
+                }
             }
 
             _ttsControl.Disconnect();

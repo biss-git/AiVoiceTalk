@@ -2,6 +2,7 @@
   "Key": "AiVoiceLibrary",
   "Name": "A.I.VOICE",
   "Description": "A.I.VOICE を呼ぶためのライブラリです。",
+  "AssemblyName": "../AiVoiceTalk.dll",
   "OS": "Windows",
   "Language": "Japanese",
   "VolumeSetting": {
@@ -16,7 +17,7 @@
     "MaxExtend": 2,
     "SmallStep": 0.01,
     "StringFormat": "0.00",
-    "Hide": true
+    "Hide": false
   },
   "SpeedSetting": {
     "Name": "話速",
@@ -30,7 +31,7 @@
     "MaxExtend": 5,
     "SmallStep": 0.01,
     "StringFormat": "0.00",
-    "Hide": true
+    "Hide": false
   },
   "PitchSetting": {
     "Name": "高さ",
@@ -44,7 +45,7 @@
     "MaxExtend": 5,
     "SmallStep": 0.01,
     "StringFormat": "0.00",
-    "Hide": true
+    "Hide": false
   },
   "EmphasisSetting": {
     "Name": "抑揚",
@@ -58,6 +59,6 @@
     "MaxExtend": 5,
     "SmallStep": 0.01,
     "StringFormat": "0.00",
-    "Hide": true
+    "Hide": false
   }
 }
