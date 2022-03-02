@@ -101,7 +101,7 @@ namespace AiVoiceTalk
                 File.WriteAllText(phraseFile,
                     "# ComponentName=\"AITalk\" ComponentVersion=\"6.0.0.0\" UpdateDateTime=\"2222 / 02 / 22 22:22:22.222\" Type=\"Phrase\" Version=\"3.3\" Language=\"Japanese\" Count=\"1\"" + Environment.NewLine +
                     "num:0" + Environment.NewLine +
-                    PhraseConverter.GetKeyText(talkScript.OriginalText) + Environment.NewLine +
+                    PhraseConverter.GetKeyText(talkScript.OriginalText.Replace(Environment.NewLine, "")) + Environment.NewLine +
                     PhraseConverter.GetPhrase(talkScript)
                     );
             }
